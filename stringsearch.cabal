@@ -109,4 +109,4 @@ Library
 
 source-repository head
   type:     mercurial
-  location: http://bitbucket.org/dafis/stringsearch
+  location: https://bitbucket.org/dafis/stringsearch
