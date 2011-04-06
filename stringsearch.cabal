@@ -52,11 +52,11 @@ Build-type:          Simple
 -- a README.
 Extra-source-files:  CHANGES
 
-Tested-with:         GHC == 6.8.3, GHC == 6.12.1, GHC == 6.12.2,
+Tested-with:         GHC == 6.12.1, GHC == 6.12.2,
                      GHC == 6.12.3, GHC == 7.0.3
 
 -- Constraint on the version of Cabal needed to build this package.
-Cabal-version:       >=1.2
+Cabal-version:       >=1.6
 
 Flag base4
   Description:       Choose base-4.*
