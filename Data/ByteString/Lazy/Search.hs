@@ -96,7 +96,7 @@ import Data.Int (Int64)
 --
 -- In general, searching in a strict 'S.ByteString' is slightly faster
 -- than searching in a lazy 'L.ByteString', but for long targets the
--- smaller memory footprint of lazy 'L.ByteStrings' can make searching
+-- smaller memory footprint of lazy 'L.ByteString's can make searching
 -- those (sometimes much) faster. On the other hand, there are cases
 -- where searching in a strict target is much faster, even for long targets.
 --
