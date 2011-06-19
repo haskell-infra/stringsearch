@@ -183,7 +183,7 @@ import Data.Int (Int64)
 --
 -- is a much more efficient version of 'S.isInfixOf'.
 
--- | @matchLL@ finds the starting indices of all possibly overlapping
+-- | @'matchLL'@ finds the starting indices of all possibly overlapping
 --   occurrences of the pattern in the target string.
 --   It is a simple wrapper for 'Data.ByteString.Lazy.Search.indices'.
 --   If the pattern is empty, the result is @[0 .. 'length' target]@.
@@ -195,7 +195,7 @@ matchLL pat = search . L.toChunks
   where
     search  = lazySearcher True (strictify pat)
 
--- | @matchSL@ finds the starting indices of all possibly overlapping
+-- | @'matchSL'@ finds the starting indices of all possibly overlapping
 --   occurrences of the pattern in the target string.
 --   It is an alias for 'Data.ByteString.Lazy.Search.indices'.
 --   If the pattern is empty, the result is @[0 .. 'length' target]@.
@@ -207,7 +207,7 @@ matchSL pat = search . L.toChunks
   where
     search = lazySearcher True pat
 
--- | matchNOL finds the indices of all non-overlapping occurrences
+-- | @'matchNOL'@ finds the indices of all non-overlapping occurrences
 --   of the pattern in the lazy target string.
 {-# INLINE matchNOL #-}
 matchNOL :: S.ByteString    -- ^ Strict pattern

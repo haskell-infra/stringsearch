@@ -182,7 +182,7 @@ import Data.Word (Word8)
 --
 -- is a much more efficient version of 'S.isInfixOf'.
 
--- | @matchLS@ finds the starting indices of all possibly overlapping
+-- | @'matchLS'@ finds the starting indices of all possibly overlapping
 --   occurrences of the pattern in the target string.
 --   It is a simple wrapper for 'Data.ByteString.Search.indices'.
 --   If the pattern is empty, the result is @[0 .. 'length' target]@.
@@ -194,7 +194,7 @@ matchLS pat = search
   where
     search = strictSearcher True (strictify pat)
 
--- | @matchSS@ finds the starting indices of all possibly overlapping
+-- | @'matchSS'@ finds the starting indices of all possibly overlapping
 --   occurrences of the pattern in the target string.
 --   It is an alias for 'Data.ByteString.Search.indices'.
 --   If the pattern is empty, the result is @[0 .. 'length' target]@.
@@ -206,7 +206,7 @@ matchSS pat = search
   where
     search = strictSearcher True pat
 
--- | matchNOS finds the indices of all non-overlapping occurrences
+-- | @'matchNOS'@ finds the indices of all non-overlapping occurrences
 --   of the pattern in the Strict target string.
 {-# INLINE matchNOS #-}
 matchNOS :: S.ByteString    -- ^ Strict pattern

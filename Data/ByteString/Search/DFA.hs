@@ -82,7 +82,7 @@ import Data.Bits
 --                            Exported Functions                            --
 ------------------------------------------------------------------------------
 
--- | @indices@ finds the starting indices of all possibly overlapping
+-- | @'indices'@ finds the starting indices of all possibly overlapping
 --   occurrences of the pattern in the target string.
 --   If the pattern is empty, the result is @[0 .. 'length' target]@.
 {-# INLINE indices #-}
@@ -91,7 +91,7 @@ indices :: S.ByteString     -- ^ Pattern to find
         -> [Int]            -- ^ Offsets of matches
 indices = strictSearcher True
 
--- | @nonOverlappingIndices@ finds the starting indices of all
+-- | @'nonOverlappingIndices'@ finds the starting indices of all
 --   non-overlapping occurrences of the pattern in the target string.
 --   It is more efficient than removing indices from the list produced
 --   by 'indices'.
@@ -101,7 +101,7 @@ nonOverlappingIndices :: S.ByteString   -- ^ Pattern to find
                       -> [Int]          -- ^ Offsets of matches
 nonOverlappingIndices = strictSearcher False
 
--- | @breakOn pattern target@ splits @target@ at the first occurrence
+-- | @'breakOn' pattern target@ splits @target@ at the first occurrence
 --   of @pattern@. If the pattern does not occur in the target, the
 --   second component of the result is empty, otherwise it starts with
 --   @pattern@. If the pattern is empty, the first component is empty.
@@ -120,7 +120,7 @@ breakOn pat = breaker
                     []      -> (str, S.empty)
                     (i:_)   -> S.splitAt i str
 
--- | @breakAfter pattern target@ splits @target@ behind the first occurrence
+-- | @'breakAfter' pattern target@ splits @target@ behind the first occurrence
 --   of @pattern@. An empty second component means that either the pattern
 --   does not occur in the target or the first occurrence of pattern is at
 --   the very end of target. To discriminate between those cases, use e.g.
@@ -142,7 +142,7 @@ breakAfter pat = breaker
                     (i:_)   -> S.splitAt (i + patLen) str
 
 
--- | @replace pat sub text@ replaces all (non-overlapping) occurrences of
+-- | @'replace' pat sub text@ replaces all (non-overlapping) occurrences of
 --   @pat@ in @text@ with @sub@. If occurrences of @pat@ overlap, the first
 --   occurrence that does not overlap with a replaced previous occurrence
 --   is substituted. Occurrences of @pat@ arising from a substitution
@@ -151,7 +151,7 @@ breakAfter pat = breaker
 -- @
 --   'replace' \"ana\" \"olog\" \"banana\" = \"bologna\"
 --   'replace' \"ana\" \"o\" \"bananana\" = \"bono\"
---   'replace' \"aab\" \"abaa\" \"aaab\" = \"abaaab\"
+--   'replace' \"aab\" \"abaa\" \"aaabb\" = \"aabaab\"
 -- @
 --
 --   The result is a /lazy/ 'L.ByteString',
@@ -197,7 +197,7 @@ replace pat
           in replacer
     in \sub -> L.fromChunks . repl sub
 
--- | @split pattern target@ splits @target@ at each (non-overlapping)
+-- | @'split' pattern target@ splits @target@ at each (non-overlapping)
 --   occurrence of @pattern@, removing @pattern@. If @pattern@ is empty,
 --   the result is an infinite list of empty 'S.ByteString's, if @target@
 --   is empty but not @pattern@, the result is an empty list, otherwise
@@ -229,7 +229,7 @@ split pat = splitter
           []    -> [str]
           (i:_) -> S.take i str : splitter' (S.drop (i + patLen) str)
 
--- | @splitKeepEnd pattern target@ splits @target@ after each (non-overlapping)
+-- | @'splitKeepEnd' pattern target@ splits @target@ after each (non-overlapping)
 --   occurrence of @pattern@. If @pattern@ is empty, the result is an
 --   infinite list of empty 'S.ByteString's, otherwise the following
 --   relations hold:
@@ -257,7 +257,7 @@ splitKeepEnd pat = splitter
           (i:_) -> S.take (i + patLen) str :
                         splitter (S.drop (i + patLen) str)
 
--- | @splitKeepFront@ is like 'splitKeepEnd', except that @target@ is split
+-- | @'splitKeepFront'@ is like 'splitKeepEnd', except that @target@ is split
 --   before each occurrence of @pattern@ and hence all fragments
 --   with the possible exception of the first begin with @pattern@.
 --   No fragment contains more than one non-overlapping occurrence

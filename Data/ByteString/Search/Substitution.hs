@@ -19,10 +19,10 @@ import qualified Data.ByteString.Lazy.Internal as LI
 --   on ByteStrings. Instances for strict and lazy ByteStrings are
 --   provided here.
 class Substitution a where
-    -- | @substitution@ transforms a value to a substitution function.
+    -- | @'substitution'@ transforms a value to a substitution function.
     substitution :: a -> ([S.ByteString] -> [S.ByteString])
     {-# INLINE substitution #-}
-    -- | @prependCycle sub lazyBS@ shall prepend infinitely many copies
+    -- | @'prependCycle' sub lazyBS@ shall prepend infinitely many copies
     --   of @sub@ to @lazyBS@ without entering an infinite loop in case
     --   of an empty @sub@, so e.g.
     --

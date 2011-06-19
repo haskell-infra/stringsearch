@@ -104,7 +104,7 @@ import Data.Int (Int64)
 --                                 Wrappers                                 --
 ------------------------------------------------------------------------------
 
--- | @indicesL@ finds all indices of (possibly overlapping)
+-- | @'indicesL'@ finds all indices of (possibly overlapping)
 --   occurrences of the pattern in the target string.
 {-# INLINE indicesL #-}
 indicesL :: S.ByteString     -- ^ Strict pattern
@@ -114,7 +114,7 @@ indicesL pat = search . L.toChunks
   where
     search = matcher True pat
 
--- | @indicesS@ finds all indices of (possibly overlapping)
+-- | @'indicesS'@ finds all indices of (possibly overlapping)
 --   occurrences of the pattern in the target string.
 {-# INLINE indicesS #-}
 indicesS :: S.ByteString     -- ^ Strict pattern
@@ -124,7 +124,7 @@ indicesS pat = search . (:[])
   where
     search = matcher True pat
 
--- | @matchLL@ finds the starting indices of all /non-overlapping/ occurrences
+-- | @'matchLL'@ finds the starting indices of all /non-overlapping/ occurrences
 --   of the pattern in the target string. It is a simple wrapper around
 --   'Data.ByteString.Lazy.Search.KMP.nonOverlappingIndices' strictifying
 --   the pattern.
@@ -137,7 +137,7 @@ matchLL pat = search . L.toChunks
     !spat = strictify pat
     search = matcher False spat
 
--- | @matchLS@ finds the starting indices of all /non-overlapping/ occurrences
+-- | @'matchLS'@ finds the starting indices of all /non-overlapping/ occurrences
 --   of the pattern in the target string. It is a simple wrapper around
 --   'Data.ByteString.Search.KMP.nonOverlappingIndices' strictifying
 --   the pattern.
@@ -150,7 +150,7 @@ matchLS pat = search . (:[])
     !spat = strictify pat
     search = matcher False spat
 
--- | @matchSS@ finds the starting indices of all /non-overlapping/ occurrences
+-- | @'matchSS'@ finds the starting indices of all /non-overlapping/ occurrences
 --   of the pattern in the target string. It is an alias for
 --   'Data.ByteString.Search.KMP.nonOverlappingIndices'.
 {-# INLINE matchSS #-}
@@ -161,7 +161,7 @@ matchSS pat = search . (:[])
   where
     search = matcher False pat
 
--- | @matchSL@ finds the starting indices of all /non-overlapping/ occurrences
+-- | @'matchSL'@ finds the starting indices of all /non-overlapping/ occurrences
 --   of the pattern in the target string. It is an alias for
 --   'Data.ByteString.Lazy.Search.KMP.nonOverlappingIndices'.
 {-# INLINE matchSL #-}

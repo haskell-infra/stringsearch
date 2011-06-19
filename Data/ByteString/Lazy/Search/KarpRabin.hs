@@ -87,7 +87,7 @@ import Data.List (foldl')
 -- Nevertheless, this module seems more of an interesting curiosity than
 -- anything else.
 
--- | @indicesOfAny@ finds all occurrences of any of several non-empty strict
+-- | @'indicesOfAny'@ finds all occurrences of any of several non-empty strict
 --   patterns in a lazy target string. If no non-empty patterns are given,
 --   the result is an empty list. Otherwise the result list contains
 --   the pairs of all indices where any of the (non-empty) patterns start

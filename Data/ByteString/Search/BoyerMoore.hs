@@ -8,7 +8,7 @@
 -- Portability    : non-portable (BangPatterns)
 --
 -- Fast overlapping Boyer-Moore search of both strict and lazy
--- 'S.ByteString' values.
+-- 'ByteString' values.
 --
 -- Descriptions of the algorithm can be found at
 -- <http://www-igm.univ-mlv.fr/~lecroq/string/node14.html#SECTION00140>

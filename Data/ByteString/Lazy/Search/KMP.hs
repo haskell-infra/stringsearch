@@ -68,7 +68,7 @@ import Data.Int (Int64)
 -- pattern, the auxiliary data will be computed only once, allowing for
 -- efficient re-use.
 
--- | @indices@ finds the starting indices of all possibly overlapping
+-- | @'indices'@ finds the starting indices of all possibly overlapping
 --   occurrences of the pattern in the target string.
 --   If the pattern is empty, the result is @[0 .. 'length' target]@.
 {-# INLINE indices #-}
@@ -77,7 +77,7 @@ indices :: S.ByteString     -- ^ Strict pattern to find
         -> [Int64]          -- ^ Offsets of matches
 indices = indicesL
 
--- | @nonOverlappingIndices@ finds the starting indices of all
+-- | @'nonOverlappingIndices'@ finds the starting indices of all
 --   non-overlapping occurrences of the pattern in the target string.
 --   It is more efficient than removing indices from the list produced
 --   by 'indices'.
@@ -87,7 +87,7 @@ nonOverlappingIndices :: S.ByteString   -- ^ Strict pattern to find
                       -> [Int64]        -- ^ Offsets of matches
 nonOverlappingIndices = matchSL
 
--- | @strictify@ transforms a lazy 'L.ByteString' into a strict
+-- | @'strictify'@ transforms a lazy 'L.ByteString' into a strict
 --   'S.ByteString', to make it a suitable pattern for the searching
 --   functions.
 strictify :: L.ByteString -> S.ByteString
