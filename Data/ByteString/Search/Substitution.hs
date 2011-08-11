@@ -21,7 +21,6 @@ import qualified Data.ByteString.Lazy.Internal as LI
 class Substitution a where
     -- | @'substitution'@ transforms a value to a substitution function.
     substitution :: a -> ([S.ByteString] -> [S.ByteString])
-    {-# INLINE substitution #-}
     -- | @'prependCycle' sub lazyBS@ shall prepend infinitely many copies
     --   of @sub@ to @lazyBS@ without entering an infinite loop in case
     --   of an empty @sub@, so e.g.
@@ -33,17 +32,20 @@ class Substitution a where
     -- shall (quickly) evaluate to 'True'.
     -- For non-empty @sub@, the cycle shall be constructed efficiently.
     prependCycle :: a -> (L.ByteString -> L.ByteString)
-    {-# INLINE prependCycle #-}
 
 instance Substitution S.ByteString where
+    {-# INLINE substitution #-}
     substitution sub = if S.null sub then id else (sub :)
+    {-# INLINE prependCycle #-}
     prependCycle sub
         | S.null sub    = id
         | otherwise     = let c = LI.Chunk sub c in const c
 
 instance Substitution L.ByteString where
+    {-# INLINE substitution #-}
     substitution LI.Empty = id
     substitution (LI.Chunk c t) = (c :) . flip (LI.foldrChunks (:)) t
+    {-# INLINE prependCycle #-}
     prependCycle sub
         | L.null sub    = id
     prependCycle sub = let cyc = LI.foldrChunks LI.Chunk cyc sub in const cyc

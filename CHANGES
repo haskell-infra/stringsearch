@@ -1,3 +1,5 @@
+0.3.6.2:
+- move some INLINE pragmas to make it compile with 7.2.1
 0.3.6.1:
 - fix error in docs
 0.3.6:

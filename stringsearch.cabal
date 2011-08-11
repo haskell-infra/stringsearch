@@ -7,7 +7,7 @@ Name:                stringsearch
 -- The package version. See the Haskell package versioning policy
 -- (http://www.haskell.org/haskellwiki/Package_versioning_policy) for
 -- standards guiding when and how versions should be incremented.
-Version:             0.3.6.1
+Version:             0.3.6.2
 
 Homepage:            https://bitbucket.org/dafis/stringsearch
 Bug-reports:         https://bitbucket.org/dafis/stringsearch/issues
@@ -22,7 +22,7 @@ Description:         This package provides several functions to quickly
                      on substrings and replacing all occurrences of a
                      substring (the first in case of overlaps) with another.
 
-                     GHC before 6.8 are no longer supported, other compilers
+                     GHC before 6.10 are no longer supported, other compilers
                      only if they support BangPatterns. If you need it to
                      work with other compilers, send a feature request.
 
@@ -52,8 +52,8 @@ Build-type:          Simple
 -- a README.
 Extra-source-files:  CHANGES
 
-Tested-with:         GHC == 6.8.3, GHC == 6.12.1, GHC == 6.12.2,
-                     GHC == 6.12.3, GHC == 7.0.3
+Tested-with:         GHC == 6.10.4, GHC == 6.12.3, GHC == 7.0.2,
+                     GHC == 7.0.4, GHC == 7.2.1
 
 -- Constraint on the version of Cabal needed to build this package.
 Cabal-version:       >=1.6
